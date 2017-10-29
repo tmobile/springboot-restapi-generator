@@ -1,0 +1,81 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:<%= bootVersion %>")
+    }
+}
+<% if (war) { %>apply plugin: 'war'<% } %>
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+group = '<%= packageName %>'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '<%= javaVersion %>'
+targetCompatibility = '<%= javaVersion %>'
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+ext {
+	springCloudVersion = '<%= springCloudVersion %>'
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile('io.springfox:springfox-swagger2:<%= springFoxVersion %>')
+    compile('io.springfox:springfox-swagger-ui:<%= springFoxVersion %>')
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-joda')
+    compile('joda-time:joda-time')
+
+    <% if (mongo) { %>compile("org.springframework.boot:spring-boot-starter-data-mongodb")<% } %>
+    <% if (redis) { %>compile("org.springframework.boot:spring-boot-starter-data-redis")<% } %>
+    <% if (es) { %>compile("org.springframework.boot:spring-boot-starter-data-elasticsearch")<% } %>
+    <% if (cassandra) { %>compile('org.springframework.boot:spring-boot-starter-data-cassandra')<% } %>
+    
+    <% if (configClient) { %>
+    compile("org.springframework.cloud:spring-cloud-starter-config")
+    compile("org.springframework.security:spring-security-rsa")
+    <% } %>
+    <% if (eureka) { %>compile("org.springframework.cloud:spring-cloud-starter-eureka")<% } %>
+    <% if (hystrix) { %>compile("org.springframework.cloud:spring-cloud-starter-hystrix")<% } %>
+    <% if (ribbon) { %>compile("org.springframework.cloud:spring-cloud-starter-ribbon")<% } %>
+    <% if (zipkin) { %>compile('org.springframework.cloud:spring-cloud-starter-zipkin')<% } %>
+
+    <% if (mysql) { %>runtime("mysql:mysql-connector-java")<% } %>
+    <% if (mssql) { %>runtime('com.microsoft.sqlserver:mssql-jdbc')<% } %>
+    <% if (jdbc) { %>compile("org.springframework.boot:spring-boot-starter-jdbc")<% } %>
+    <% if (jpa) { %>compile("org.springframework.boot:spring-boot-starter-data-jpa")<% } %>
+    
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+<% if (usesSpringCloud) { %>
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+<% } %>
+
+<% if (jar) { %>
+jar {
+    baseName = '<%= baseName %>'
+}<% } %>
+<% if (war) { %>
+war {
+    baseName =  '<%= baseName %>'
+}<% } %>
+
+task (type: Wrapper) {
+    gradleVersion = '4.2.1'
+}

@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "rprakashg",
+      "authorEmail": "Ramprakash.Gopinathan@t-mobile.com",
+      "authorUrl": "https://github.com/tmobile/generator-msg"
+    }
+  }
+}

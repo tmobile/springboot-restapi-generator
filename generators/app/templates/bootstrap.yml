@@ -1,0 +1,19 @@
+encrypt:
+  failOnError: false
+  keyStore:
+    location: file:/home/keystore/${CONFIG_SERVER_KEYSTORE_FILE}
+    alias: ${CONFIG_SERVER_KEYSTORE_ALIAS}
+    password: ${CONFIG_SERVER_KEYSTORE_PASSWORD}
+    secret: ${CONFIG_SERVER_KEYSTORE_SECRET}
+
+
+spring:
+  application:
+    name: <%= baseName %>
+  cloud:
+    config:
+      enabled: true
+      uri: ${CONFIG_SERVER}
+      username: ${CONFIG_SERVER_USER}
+      password: ${CONFIG_SERVER_PWD}
+      label: ${CONFIG_SERVER_LABEL}
