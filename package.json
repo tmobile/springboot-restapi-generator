@@ -2,11 +2,11 @@
   "name": "generator-springboot-restapi",
   "version": "0.0.0",
   "description": "SpringBoot microservice yoman generator",
-  "homepage": "https://github.com/tmobile/springboot-restapi-yeoman-generator",
+  "homepage": "https://github.com/tmobile/springboot-restapi-generator",
   "author": {
     "name": "rprakashg",
     "email": "Ramprakash.Gopinathan@t-mobile.com",
-    "url": "https://github.com/tmobile/springboot-restapi-yeoman-generator"
+    "url": "https://github.com/tmobile/springboot-restapi-generator"
   },
   "files": [
     "generators"
@@ -77,6 +77,6 @@
       "prettier"
     ]
   },
-  "repository": "tmobile/springboot-restapi-yeoman-generator",
+  "repository": "tmobile/springboot-restapi-generator",
   "license": "Apache-2.0"
 }

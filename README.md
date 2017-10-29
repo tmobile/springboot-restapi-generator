@@ -1,19 +1,19 @@
-# generator-msg [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> SpringBoot microservice yoman generator
+# generator-springboot-restapi [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+> Custom yoman generator for scaffolding REST APIs based on SpringBoot
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-msg using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-springboot-restapi using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
-npm install -g generator-msg
+npm install -g generator-springboot-restapi
 ```
 
 Then generate your new project:
 
 ```bash
-yo msg
+yo springboot-restapi
 ```
 
 ## Getting To Know Yeoman
