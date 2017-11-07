@@ -394,4 +394,11 @@ module.exports = class extends Generator {
       this.destinationPath(this.baseName + '/.gitignore')
     );
   }
+
+  //install(){
+  //  this.installDependencies({
+  //    npm: true,
+  //    bower: true
+  //  }).then(() => console.log('Everything is ready!'));
+  //}
 };
