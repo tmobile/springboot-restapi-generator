@@ -1,4 +1,10 @@
 spring:
   application:
     name: <%= baseName %>
-
+server:
+  contextPath: /<%= baseName %>
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /api-docs
