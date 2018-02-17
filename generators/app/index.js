@@ -182,6 +182,7 @@ module.exports = class extends Generator {
       this.registry = props.registry;
       this.imageName = props.imageName;
       this.swaggerFile = props.swaggerFile;
+      this.usesSpringCloud = props.cloud.length > 0;
 
       var hasPackagingType = function(pt) {
         return props.packagingType.indexOf(pt) !== -1;
