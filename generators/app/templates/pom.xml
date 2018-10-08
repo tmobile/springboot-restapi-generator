@@ -175,6 +175,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<% if (swaggerFile) { %>
 			<plugin>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-codegen-maven-plugin</artifactId>
@@ -211,6 +212,7 @@
                     </execution>
                 </executions>
             </plugin>
+			<% } %>
 		</plugins>
 	</build>
 

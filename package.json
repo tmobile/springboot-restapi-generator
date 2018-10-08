@@ -8,32 +8,26 @@
     "email": "Ramprakash.Gopinathan@t-mobile.com",
     "url": "https://github.com/tmobile/springboot-restapi-generator"
   },
-  "files": [
-    "generators"
-  ],
+  "files": ["generators"],
   "main": "generators/index.js",
-  "keywords": [
-    "yeoman-generator",
-    "microservice",
-    "springboot"
-  ],
+  "keywords": ["yeoman-generator", "microservice", "springboot"],
   "devDependencies": {
-    "yeoman-test": "^1.7.0",
-    "yeoman-assert": "^3.1.0",
-    "nsp": "^2.6.3",
     "eslint": "^4.1.0",
-    "prettier": "^1.7.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^4.2.1",
     "eslint-config-prettier": "^2.4.0",
-    "eslint-plugin-prettier": "^2.2.0",
     "eslint-config-xo": "^0.18.2",
+    "eslint-plugin-prettier": "^2.2.0",
+    "husky": "^0.14.3",
     "jest": "^21.0.0",
-    "jest-cli": "^21.0.0"
+    "jest-cli": "^21.0.0",
+    "lint-staged": "^4.2.1",
+    "nsp": "^3.2.1",
+    "prettier": "^1.7.0",
+    "yeoman-assert": "^3.1.0",
+    "yeoman-test": "^2.0.0"
   },
   "dependencies": {
-    "yeoman-generator": "^2.0.1",
     "chalk": "^2.1.0",
+    "yeoman-generator": "^3.1.1",
     "yosay": "^2.0.1"
   },
   "jest": {
@@ -46,20 +40,11 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "git add"],
+    "*.json": ["prettier --write", "git add"]
   },
   "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
+    "extends": ["xo", "prettier"],
     "env": {
       "jest": true,
       "node": true
@@ -73,9 +58,7 @@
         }
       ]
     },
-    "plugins": [
-      "prettier"
-    ]
+    "plugins": ["prettier"]
   },
   "repository": "tmobile/springboot-restapi-generator",
   "license": "Apache-2.0"

@@ -294,7 +294,12 @@ module.exports = class extends Generator {
     }
 
     if (this.buildTool[0] === 'maven') {
-      this.fs.copyTpl(this.swaggerFile, this.destinationPath(resDir + this.swaggerFile));
+      if (this.swaggerFile) {
+        this.fs.copyTpl(
+          this.swaggerFile,
+          this.destinationPath(resDir + this.swaggerFile)
+        );
+      }
       this.fs.copyTpl(
         this.templatePath('.swagger-codegen-ignore'),
         this.destinationPath(this.baseName + '/.swagger-codegen-ignore'),
