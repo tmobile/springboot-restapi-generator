@@ -15,8 +15,7 @@ module.exports = class extends Generator {
       {
         type: 'string',
         name: 'swaggerFile',
-        message: 'Enter swagger file :',
-        default: 'nofile'
+        message: 'Enter swagger file :'
       },
       {
         type: 'string',
@@ -260,8 +259,7 @@ module.exports = class extends Generator {
           zipkin: this.zipkin
         }
       );
-    }
-    if (this.buildTool[0] === 'maven') {
+    } else {
       this.fs.copyTpl(
         this.templatePath('pom.xml'),
         this.destinationPath(this.baseName + '/pom.xml'),
@@ -291,10 +289,7 @@ module.exports = class extends Generator {
           swaggerFile: this.swaggerFile
         }
       );
-    }
-
-    if (this.buildTool[0] === 'maven') {
-      if (this.swaggerFile) {
+      if (this.fs.exists(this.swaggerFile)) {
         this.fs.copyTpl(
           this.swaggerFile,
           this.destinationPath(resDir + this.swaggerFile)
@@ -307,58 +302,63 @@ module.exports = class extends Generator {
           packageName: this.packageName
         }
       );
-    } else {
-      this.fs.copyTpl(
-        this.templatePath('Application.java'),
-        this.destinationPath(srcDir + 'Application.java'),
-        {
-          packageName: this.packageName
-        }
-      );
-      this.fs.copyTpl(
-        this.templatePath('RFC3339DateFormat.java'),
-        this.destinationPath(srcDir + 'RFC3339DateFormat.java'),
-        {
-          packageName: this.packageName
-        }
-      );
-
-      this.fs.copyTpl(
-        this.templatePath('ApiException.java'),
-        this.destinationPath(apiDir + 'ApiException.java'),
-        {
-          packageName: this.packageName
-        }
-      );
-      this.fs.copyTpl(
-        this.templatePath('ApiResponseMessage.java'),
-        this.destinationPath(apiDir + 'ApiResponseMessage.java'),
-        {
-          packageName: this.packageName
-        }
-      );
-      this.fs.copyTpl(
-        this.templatePath('NotFoundException.java'),
-        this.destinationPath(apiDir + 'NotFoundException.java'),
-        {
-          packageName: this.packageName
-        }
-      );
-      this.fs.copyTpl(
-        this.templatePath('SwaggerDocumentationConfig.java'),
-        this.destinationPath(configDir + 'SwaggerDocumentationConfig.java'),
-        {
-          packageName: this.packageName
-        }
-      );
-      this.fs.copyTpl(
-        this.templatePath('HomeController.java'),
-        this.destinationPath(controllerDir + 'HomeController.java'),
-        {
-          packageName: this.packageName
-        }
-      );
     }
+
+    this.fs.copyTpl(
+      this.templatePath('Application.java'),
+      this.destinationPath(srcDir + 'Application.java'),
+      {
+        packageName: this.packageName
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('RFC3339DateFormat.java'),
+      this.destinationPath(srcDir + 'RFC3339DateFormat.java'),
+      {
+        packageName: this.packageName
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('ApiException.java'),
+      this.destinationPath(apiDir + 'ApiException.java'),
+      {
+        packageName: this.packageName
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('ApiResponseMessage.java'),
+      this.destinationPath(apiDir + 'ApiResponseMessage.java'),
+      {
+        packageName: this.packageName
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('NotFoundException.java'),
+      this.destinationPath(apiDir + 'NotFoundException.java'),
+      {
+        packageName: this.packageName
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('SwaggerDocumentationConfig.java'),
+      this.destinationPath(configDir + 'SwaggerDocumentationConfig.java'),
+      {
+        packageName: this.packageName
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('HomeController.java'),
+      this.destinationPath(controllerDir + 'HomeController.java'),
+      {
+        packageName: this.packageName
+      }
+    );
+
     this.fs.copyTpl(
       this.templatePath('ApplicationTests.java'),
       this.destinationPath(testDir + 'ApplicationTests.java'),
@@ -374,10 +374,12 @@ module.exports = class extends Generator {
         baseName: this.baseName
       }
     );
+
     this.fs.copy(
       this.templatePath('entrypoint.sh'),
       this.destinationPath(this.baseName + '/entrypoint.sh')
     );
+
     if (this.configClient) {
       this.fs.copyTpl(
         this.templatePath('bootstrap.yml'),
@@ -395,6 +397,7 @@ module.exports = class extends Generator {
         }
       );
     }
+
     this.fs.copyTpl(
       this.templatePath('build.sh'),
       this.destinationPath(this.baseName + '/build.sh'),
@@ -402,6 +405,7 @@ module.exports = class extends Generator {
         imageName: this.imageName
       }
     );
+
     this.fs.copyTpl(
       this.templatePath('run.sh'),
       this.destinationPath(this.baseName + '/run.sh'),
@@ -409,6 +413,7 @@ module.exports = class extends Generator {
         imageName: this.imageName
       }
     );
+
     this.fs.copyTpl(
       this.templatePath('push.sh'),
       this.destinationPath(this.baseName + '/push.sh'),
@@ -417,6 +422,7 @@ module.exports = class extends Generator {
         registry: this.registry
       }
     );
+
     this.fs.copy(
       this.templatePath('.gitignore'),
       this.destinationPath(this.baseName + '/.gitignore')
